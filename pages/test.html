@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test - Mock Test Portal</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/test.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700&family=Montserrat:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Fullscreen Exit Button (appears on hover at top) -->
+    <div class="fullscreen-exit-btn">
+        <i class="fas fa-times"></i>
+    </div>
+
+    <!-- Test Page (CBT Interface) -->
+    <section id="test-view" class="view test-page">
+        <!-- Test Header -->
+        <header class="test-header">
+            <div class="test-title-wrapper">
+                <button id="exit-test-btn" class="exit-btn" title="Exit Test">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+                <div class="test-title" id="active-test-title">CUET Mock Test</div>
+            </div>
+            <div class="header-right">
+                <div id="progress-indicator" class="progress-indicator">0/0 Questions</div>
+                <div class="timer-container">
+                    <span>Remaining Time:</span>
+                    <div id="timer" class="timer-display">00:00:00</div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Test Layout: Question Area + Sidebar -->
+        <div class="test-layout">
+            <!-- Main Question Area -->
+            <main class="question-area">
+                <!-- Question Header -->
+                <div class="question-header">
+                    <span id="question-number">Question 1</span>
+                    <div class="marks-info">
+                        Marks for correct response: <span class="positive">+5.00</span> | Negative marking: <span
+                            class="negative">-1.00</span>
+                    </div>
+                </div>
+
+                <!-- Question Content -->
+                <div class="question-content">
+                    <p id="question-text">Loading question...</p>
+                    <div id="options-container" class="options-list">
+                        <!-- Options will be injected here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Navigation Footer -->
+                <footer class="test-footer">
+                    <div class="footer-left">
+                        <button id="prev-btn" class="secondary-btn">Previous</button>
+                        <button id="mark-review-btn" class="secondary-btn">Mark for Review & Next</button>
+                        <button id="clear-response-btn" class="secondary-btn">Clear Response</button>
+                    </div>
+                    <div class="footer-right">
+                        <button id="save-next-btn" class="accent-btn">Save & Next</button>
+                        <button id="submit-test-btn" class="danger-btn">Submit</button>
+                    </div>
+                </footer>
+            </main>
+
+            <!-- Sidebar with Palette -->
+            <aside class="sidebar">
+                <!-- Status Legend -->
+                <div class="status-legend">
+                    <div class="legend-item"><span class="status-box answered">0</span> Answered</div>
+                    <div class="legend-item"><span class="status-box not-answered">0</span> Not Answered</div>
+                    <div class="legend-item"><span class="status-box not-visited">0</span> Not Visited</div>
+                    <div class="legend-item"><span class="status-box review">0</span> Marked for Review</div>
+                    <div class="legend-item"><span class="status-box answered-review">0</span> Answered & Marked for
+                        Review</div>
+                </div>
+
+                <!-- Question Palette -->
+                <div class="palette-container">
+                    <h3>Choose a Question</h3>
+                    <div id="question-palette" class="palette-grid">
+                        <!-- Palette items injected here by JavaScript -->
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    <!-- Modal Overlay -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <!-- Exit Confirmation Modal -->
+        <div id="exit-modal" class="modal-content hidden">
+            <div class="modal-header">
+                <h3>Exit Test</h3>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to exit the test? Your progress will not be saved.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn" id="exit-cancel-btn">Cancel</button>
+                <button class="danger-btn" id="exit-confirm-btn">Exit</button>
+            </div>
+        </div>
+
+        <!-- Submit Confirmation Modal -->
+        <div id="submit-modal" class="modal-content hidden">
+            <div class="modal-header">
+                <h3>Submit Quiz</h3>
+            </div>
+            <div class="modal-body">
+                <div class="submit-stats-grid">
+                    <div class="submit-stat-item">
+                        <div class="status-box answered" id="modal-answered-count">0</div>
+                        <span>Answered</span>
+                    </div>
+                    <div class="submit-stat-item">
+                        <div class="status-box not-answered" id="modal-not-answered-count">0</div>
+                        <span>Not Answered</span>
+                    </div>
+                    <div class="submit-stat-item">
+                        <div class="status-box not-visited" id="modal-not-visited-count">0</div>
+                        <span>Not Visited</span>
+                    </div>
+                    <div class="submit-stat-item">
+                        <div class="status-box review" id="modal-review-count">0</div>
+                        <span>Marked for Review</span>
+                    </div>
+                    <div class="submit-stat-item full-width">
+                        <div class="status-box answered-review" id="modal-answered-review-count">0</div>
+                        <span>Answered & Marked for Review (will be evaluated)</span>
+                    </div>
+                </div>
+                <p class="submit-confirmation-text">Are you sure to submit?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="secondary-btn" id="submit-cancel-btn">Cancel</button>
+                <button class="primary-btn" id="submit-confirm-btn">Submit</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../js/registry.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/test.js"></script>
+</body>
+
+</html>

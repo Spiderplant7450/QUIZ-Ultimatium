@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer Key - Mock Test Portal</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/answer-key.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700&family=Montserrat:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Answer Key Page -->
+    <section id="answer-key-view" class="view">
+        <div class="answer-key-container">
+            <!-- Header -->
+            <header class="answer-key-header">
+                <h2>
+                    <i class="fas fa-key"></i>
+                    Answer Key
+                </h2>
+                <button id="back-to-result-btn" class="secondary-btn">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Back to Results</span>
+                </button>
+            </header>
+
+            <!-- Main Content Area -->
+            <div class="answer-key-main">
+                <!-- Answer Key Content -->
+                <div id="answer-key-content" class="answer-key-content">
+                    <!-- Answer key will be injected here by JavaScript -->
+                </div>
+
+                <!-- Question Navigator -->
+                <aside class="question-navigator">
+                    <div class="navigator-header">
+                        <h3><i class="fas fa-th"></i> Question Navigator</h3>
+                    </div>
+                    <div id="navigator-grid" class="navigator-grid">
+                        <!-- Navigator buttons will be injected here -->
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript Files -->
+    <script src="../js/registry.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/answer-key.js"></script>
+</body>
+
+</html>

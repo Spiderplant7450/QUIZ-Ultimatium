@@ -1,0 +1,387 @@
+/* ==========================================================================
+   ANSWER-KEY.CSS - Answer Key Page Specific Styles
+   
+   This file contains styles for the answer key page:
+   - Answer key header with back button
+   - Question cards showing correct/incorrect answers
+   - Option highlighting (correct answer, user's answer)
+   - Status indicators
+   
+   This file should be loaded AFTER common.css
+   ========================================================================== */
+
+/* ==========================================================================
+   ANSWER KEY CONTAINER
+   ========================================================================== */
+#answer-key-view {
+    background: url('../assets/result%20page%20bg.png') center/cover no-repeat fixed;
+    padding: 2rem;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    overflow: hidden;
+}
+
+.answer-key-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2.5rem;
+    height: 100%;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+    border-radius: 0px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom scrollbar for better aesthetics */
+.answer-key-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.answer-key-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.answer-key-container::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.3);
+    border-radius: 10px;
+}
+
+.answer-key-container::-webkit-scrollbar-thumb:hover {
+    background: rgba(99, 102, 241, 0.5);
+}
+
+/* ==========================================================================
+   ANSWER KEY HEADER
+   
+   Top section with title and back button
+   ========================================================================== */
+.answer-key-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    flex-shrink: 0;
+}
+
+.answer-key-header h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #6366f1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.answer-key-header h2 i {
+    color: #6366f1;
+}
+
+/* ==========================================================================
+   ANSWER KEY CONTENT & LAYOUT
+   
+   Main layout area with sidebar
+   ========================================================================== */
+.answer-key-main {
+    display: flex;
+    gap: 2.7rem;
+    align-items: flex-start;
+    position: relative;
+    flex: 1;
+    min-height: 0;
+}
+
+.answer-key-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding-bottom: 2rem;
+}
+
+/* ==========================================================================
+   QUESTION NAVIGATOR
+   ========================================================================== */
+.question-navigator {
+    width: 320px;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: fit-content;
+    max-height: calc(100vh - 120px);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.navigator-header {
+    padding: 1.25rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.navigator-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    color: #475569;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.navigator-header h3 i {
+    color: #6366f1;
+}
+
+.navigator-grid {
+    padding: 1.25rem;
+    padding-bottom: 2.5rem;
+    /* Increased bottom padding */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.75rem;
+    overflow-y: auto;
+    flex: 1;
+    scroll-padding: 10px;
+    /* Added scroll-padding */
+}
+
+/* Custom scrollbar for navigator grid */
+.navigator-grid::-webkit-scrollbar {
+    width: 4px;
+}
+
+.navigator-grid::-webkit-scrollbar-thumb {
+    background: rgba(99, 102, 241, 0.2);
+    border-radius: 10px;
+}
+
+.nav-item {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    background: #f1f5f9;
+    color: #475569;
+    scroll-margin: 10px;
+    /* Added scroll-margin */
+}
+
+.nav-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.nav-item.correct {
+    background: #d1fae5;
+    color: #10b981;
+}
+
+.nav-item.incorrect {
+    background: #fee2e2;
+    color: #ef4444;
+}
+
+.nav-item.skipped {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+.nav-item.active {
+    box-shadow: 0 0 0 2px white, 0 0 0 5px #6366f1;
+    /* Using double shadow for "ring" effect */
+    z-index: 1;
+}
+
+.nav-item.active.correct {
+    background: #10b981;
+    color: white;
+}
+
+.nav-item.active.incorrect {
+    background: #ef4444;
+    color: white;
+}
+
+.nav-item.active.skipped {
+    background: #6366f1;
+    color: white;
+}
+
+/* ==========================================================================
+   ANSWER KEY QUESTION CARD
+   
+   Individual question card showing question, options, and status
+   ========================================================================== */
+.answer-key-question {
+    background: white;
+    padding: 2rem;
+    padding-bottom: 40px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    border: 1px solid #f1f5f9;
+    transition: var(--transition);
+    scroll-margin-top: 1.5rem;
+}
+
+.answer-key-question:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+/* Question header (number and status) */
+.answer-key-question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.answer-key-question-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* Status badge (Correct, Incorrect, Skipped) */
+.answer-key-status {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.answer-key-status.correct {
+    background: #ecfdf5;
+    color: #10b981;
+}
+
+.answer-key-status.incorrect {
+    background: #fef2f2;
+    color: #ef4444;
+}
+
+.answer-key-status.skipped {
+    background: #f1f5f9;
+    color: #475569;
+}
+
+/* Question text */
+.answer-key-question-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-main);
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+}
+
+/* ==========================================================================
+   ANSWER KEY OPTIONS
+   
+   List of options with highlighting for correct/user answers
+   ========================================================================== */
+.answer-key-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.answer-key-option {
+    padding: 1rem 1.25rem;
+    border-radius: var(--radius-sm);
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: var(--transition);
+    background: white;
+}
+
+/* Correct answer highlighting (green) */
+.answer-key-option.correct-answer {
+    background: #ecfdf5;
+    border-color: #10b981;
+}
+
+/* User's incorrect answer highlighting (red) */
+.answer-key-option.user-answer {
+    background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+    border-color: var(--danger-color);
+}
+
+/* User's correct answer (both correct and user answer) */
+.answer-key-option.correct-answer.user-answer {
+    background: #ecfdf5;
+    border-color: #10b981;
+}
+
+/* Option label (A, B, C, D) */
+.answer-key-option-label {
+    font-weight: 600;
+    color: var(--text-main);
+    min-width: 30px;
+}
+
+/* Option text */
+.answer-key-option-text {
+    flex: 1;
+    color: var(--text-main);
+}
+
+/* Option icon (checkmark or X) */
+.answer-key-option-icon {
+    font-size: 1.25rem;
+}
+
+.answer-key-option.correct-answer .answer-key-option-icon {
+    color: var(--success-color);
+}
+
+.answer-key-option.user-answer:not(.correct-answer) .answer-key-option-icon {
+    color: var(--danger-color);
+}
+
+/* ==========================================================================
+   RESULT ACTIONS
+   
+   Action buttons at bottom of answer key (if needed)
+   ========================================================================== */
+.result-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.result-actions .primary-btn,
+.result-actions .accent-btn {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}

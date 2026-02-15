@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Test Portal - Interactive Learning</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/home.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700&family=Montserrat:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <!-- Home Page -->
+        <section id="home-view" class="view home-page">
+            <div class="home-background"></div>
+
+            <!-- Hero Section -->
+            <header class="hero">
+                <div class="hero-content">
+                    <div class="hero-icon">
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
+                    <h1>Mock Test Portal</h1>
+                    <p>Select a subject and chapter to start a mock test to prepare for your exams.</p>
+                </div>
+            </header>
+
+            <!-- Main Content -->
+            <main class="home-main">
+                <!-- Selection Container -->
+                <div class="selection-container">
+                    <!-- Subject Selection -->
+                    <div class="selection-header">
+                        <div class="card-icon">
+                            <i class="fa-solid fa-book"></i>
+                        </div>
+                        <label for="subject-trigger">Choose Subject</label>
+                    </div>
+                    <div class="custom-dropdown" id="subject-dropdown">
+                        <div class="dropdown-trigger" id="subject-trigger">
+                            <span id="selected-subject-text">Select Subject</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-content" id="subject-dropdown-content">
+                            <div class="chapter-list" id="subject-list">
+                                <!-- Subjects will be injected here by JavaScript -->
+                            </div>
+                            <div class="hint-border"></div>
+                        </div>
+                    </div>
+
+                    <!-- Chapter Selection -->
+                    <div class="selection-header">
+                        <div class="card-icon">
+                            <i class="fa-sharp fa-solid fa-book-open"></i>
+                        </div>
+                        <label for="chapter-select">Choose Chapter</label>
+                    </div>
+                    <div class="custom-dropdown disabled" id="chapter-dropdown">
+                        <div class="dropdown-trigger" id="chapter-trigger">
+                            <span id="selected-chapter-text">Select Chapter</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="dropdown-content" id="chapter-dropdown-content">
+                            <!-- Mode Selection -->
+                            <div class="dropdown-header">
+                                <label class="mode-option">
+                                    <input type="radio" name="selection-mode" value="multi" checked>
+                                    <span class="radio-custom"></span>
+                                    <span class="mode-label">Multi-select mode</span>
+                                </label>
+                                <label class="mode-option">
+                                    <input type="radio" name="selection-mode" value="single">
+                                    <span class="radio-custom"></span>
+                                    <span class="mode-label">Single-select mode</span>
+                                </label>
+                            </div>
+
+                            <!-- Chapter List -->
+                            <div class="chapter-list" id="chapter-list">
+                                <div class="no-subject-msg">Please select a subject first</div>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="dropdown-footer">
+                                <div class="selection-status" id="selection-status">
+                                    <span id="selected-count">0</span> Chapters Selected
+                                </div>
+                                <div class="dropdown-actions">
+                                    <button type="button" class="apply-btn" id="apply-chapters-btn">Apply</button>
+                                    <button type="button" class="clear-btn" id="clear-chapters-btn">Clear</button>
+                                </div>
+                            </div>
+
+                            <!-- Mode Hint -->
+                            <div class="mode-hint" id="mode-hint">
+                                Multi-select mode: 50 random questions, 60-minute limit
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Reshuffle Toggle -->
+                    <div class="reshuffle-container">
+                        <label class="toggle-label">
+                            <input type="checkbox" id="reshuffle-toggle" checked>
+                            <span class="toggle-slider"></span>
+                            <span class="toggle-text">Reshuffle Questions</span>
+                        </label>
+                    </div>
+
+                    <!-- Start Test Button -->
+                    <button id="start-test-btn" class="primary-btn" disabled>
+                        <span>Start Test</span>
+                    </button>
+                </div>
+
+                <!-- Features Section -->
+                <div class="features-section">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h4>Timed Tests</h4>
+                        <p>Set timers to simulate real exam scenarios.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>Instant Results</h4>
+                        <p>Get your results immediately after the test.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h4>Performance Analysis</h4>
+                        <p>Track your scores and progress over time.</p>
+                    </div>
+                </div>
+            </main>
+        </section>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/registry.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
+</body>
+
+</html>

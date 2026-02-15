@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - Mock Test Portal</title>
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/result.css">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;600;700&family=Montserrat:wght@700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <!-- Result Page -->
+    <section id="result-view" class="view result-page">
+        <!-- Navbar -->
+        <nav class="result-navbar">
+            <div class="nav-actions">
+                <button id="nav-retake-btn" class="retake-btn">
+                    <i class="fas fa-redo"></i> <span>Retake</span>
+                </button>
+                <button id="nav-home-btn" class="home-btn">
+                    <i class="fas fa-home"></i> <span>Back to Home</span>
+                </button>
+            </div>
+        </nav>
+
+        <div class="result-container">
+            <!-- Header Section -->
+            <header class="result-header">
+                <div class="header-info">
+                    <h1 id="result-title">Political Science: The End of Bipolarity</h1>
+                    <p id="result-timestamp">Completed on Feb 5, 2026 05:47 PM IST</p>
+                </div>
+                <button id="view-answer-key-btn" class="view-answer-btn">
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i> <span>View Answer Key</span>
+                </button>
+            </header>
+
+            <div class="result-grid">
+                <!-- Left Column: Compact Overview Card -->
+                <div class="result-card overview-card">
+                    <div class="overview-top">
+                        <div class="chart-container" id="donut-chart-container">
+                            <div class="chart-center">
+                                <span id="chart-marks-val">
+                                    <span class="earned-text">0</span>
+                                    <span class="separator-text">/</span>
+                                    <span class="total-text">0</span>
+                                </span>
+                                <small>Marks</small>
+                            </div>
+                            <div id="chart-tooltip" class="hidden"></div>
+                        </div>
+                        <div class="overview-stats">
+                            <h1 class="overview-title">Overview</h1>
+                            <div class="time-block">
+                                <span class="label">Time Taken</span>
+                                <h1 id="overview-time-taken" class="value">00:00</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="overview-details-box">
+                        <div class="badge-row" id="badge-container">
+                            <div class="badge-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="badge-info">
+                                <h4 id="badge-title">Keep Learning</h4>
+                            </div>
+                        </div>
+
+                        <div class="legend-list">
+                            <div class="legend-item" id="legend-correct">
+                                <div class="legend-label">
+                                    <i class="fas fa-check"></i> <span>Correct</span>
+                                </div>
+                                <div class="legend-marks success-text">+0 Marks</div>
+                            </div>
+                            <div class="legend-item" id="legend-incorrect">
+                                <div class="legend-label">
+                                    <i class="fas fa-xmark"></i> <span>Incorrect</span>
+                                </div>
+                                <div class="legend-marks danger-text">- 0 Marks</div>
+                            </div>
+                            <div class="legend-item" id="legend-unanswered">
+                                <div class="legend-label">
+                                    <i class="fas fa-question"></i> <span>Unanswered</span>
+                                </div>
+                                <div class="legend-marks muted-text">0 Marks</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Two Stacked Cards -->
+                <div class="right-col">
+                    <div class="result-card performance-card">
+                        <div class="perf-icon">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                        <div class="perf-content">
+                            <h2 id="msg-header">Great Job!</h2>
+                            <p id="msg-desc">You scored well! A little more practice and you'll be perfect.</p>
+                        </div>
+                        <div class="perf-percent">
+                            <h2 id="msg-percent">0%</h2>
+                            <span>Percentage</span>
+                        </div>
+                    </div>
+
+                    <div class="result-card summary-card">
+                        <ul class="stats-list">
+                            <li><span>Total questions</span><span class="line"></span><span
+                                    id="summary-total-q">0</span></li>
+                            <li><span>Correct questions</span><span class="line"></span><span
+                                    id="summary-correct-q">0</span></li>
+                            <li><span>Incorrect questions</span><span class="line"></span><span
+                                    id="summary-wrong-q">0</span></li>
+                            <li><span>Unanswered questions</span><span class="line"></span><span
+                                    id="summary-unanswered-q">0</span></li>
+                            <li><span>Accuracy</span><span class="line"></span><span id="summary-accuracy">0%</span>
+                            </li>
+                            <li><span>Total Time Taken</span><span class="line"></span><span id="summary-total-time">0m
+                                    0s</span></li>
+                            <li><span>Avg time per question</span><span class="line"></span><span
+                                    id="summary-avg-time">0s</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Breakdown Section -->
+            <section class="breakdown-section">
+                <div class="breakdown-header">
+                    <h2>Question-wise Breakdown</h2>
+                    <a href="#" class="view-solutions" id="view-solutions-link">View Solutions <i
+                            class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="breakdown-container result-card">
+                    <div class="filter-bar">
+                        <button class="filter-btn active" data-filter="all">All <span
+                                class="count-badge">0</span></button>
+                        <button class="filter-btn" data-filter="correct">Correct <span
+                                class="count-badge success">0</span></button>
+                        <button class="filter-btn" data-filter="incorrect">Incorrect <span
+                                class="count-badge danger">0</span></button>
+                        <button class="filter-btn" data-filter="unanswered">Unanswered <span
+                                class="count-badge muted">0</span></button>
+                    </div>
+                    <div class="breakdown-table-container">
+                        <table class="breakdown-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Question</th>
+                                    <th>Result</th>
+                                    <th>Time Taken</th>
+                                    <th>Marks</th>
+                                </tr>
+                            </thead>
+                            <tbody id="breakdown-body"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chapter Analysis Section -->
+            <section class="analysis-section">
+                <div class="result-card analysis-card">
+                    <h2 class="analysis-title">Chapter-Wise Analysis</h2>
+                    <div class="analysis-list" id="analysis-list"></div>
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- JavaScript Files -->
+    <script src="../js/registry.js"></script>
+    <script src="../js/common.js"></script>
+    <script src="../js/result.js"></script>
+</body>
+
+</html>
